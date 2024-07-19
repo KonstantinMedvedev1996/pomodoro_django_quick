@@ -1,0 +1,55 @@
+python -m venv .ven
+
+.ven/scripts/activate
+
+python -V 
+
+pip install django
+
+django-admin startproject project
+
+cd project
+
+python manage.py runserver  
+exit from server CTRL+C
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+July 15, 2024 - 20:07:16
+Django version 5.0.7, using settings 'project.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+CTRL+SHIFT+F smart search
+
+python manage.py migrate
+python manage.py createsuperuser  (admin1 123456)
+python manage.py startapp orders
+python manage.py makemigrations
+python manage.py migrate
+
+how to access through code to database
+python manage.py shell
+from orders.models import SalesOrder
+SalesOrder.objects.all()
+order =  SalesOrder.objects.all()[1]
+order.id
+order.amount
+order.description
+
+order1, order2, order3 = SalesOrder.objects.all()
+
+quit() * for exiting interective shell
+
+
+python manage.py startapp products
+python manage.py makemigrations
+python manage.py migrate
+
+from orders.models import SalesOrder
+order =  SalesOrder.objects.all()[1]
+order.products.all()
+order.products.all()[0].name
+order.products.all()[1].name
+
+http://127.0.0.1:8000/api/orders/?format=json
